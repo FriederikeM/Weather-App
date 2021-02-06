@@ -54,6 +54,11 @@ a:hover {
   color: #01172f;
 }
 
+#github-link {
+  color: #99e9e7;
+  font-weight: bold;
+}
+
 .button {
   border-radius: 8px;
   border: none;
