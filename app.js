@@ -107,6 +107,10 @@ function displayWeatherCondition(response) {
   document.querySelector("#current-description").innerHTML =
     response.data.weather[0].description;
 
+  // celsius to fahrenheit conversion
+
+  celsiusTemperature = Math.round(response.data.main.temp);
+
   // change of main icon
 
   let iconElement = document.querySelector("#main-icon");
@@ -209,24 +213,30 @@ function getCurrentLocation(event) {
 
 // format temperature unit
 
-let fahrenheit = document.querySelector("#fahrenheit");
-let temperatureElement = document.querySelector("#current-temperature");
-let temperature = temperatureElement.innerHTML;
-fahrenheit.addEventListener("click", changeUnitToFahrenheit);
+let celsiusTemperature = null;
 
 function changeUnitToFahrenheit(event) {
   event.preventDefault();
-  temperature = Number(temperature);
-  temperatureElement.innerHTML = Math.round((temperature * 9) / 5 + 32);
+  let temperatureElement = document.querySelector("#current-temperature");
+  celsius.classList.remove("active");
+  fahrenheit.classList.add("active");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", changeUnitToFahrenheit);
+
+function changeUnitToCelsius(event) {
+  event.preventDefault();
+  celsius.classList.add("active");
+  fahrenheit.classList.remove("active");
+  let temperatureElement = document.querySelector("#current-temperature");
+  temperatureElement.innerHTML = celsiusTemperature;
 }
 
 let celsius = document.querySelector("#celsius");
 celsius.addEventListener("click", changeUnitToCelsius);
-
-function changeUnitToCelsius(event) {
-  event.preventDefault();
-  temperatureElement.innerHTML = `18`;
-}
 
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);

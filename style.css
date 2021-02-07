@@ -43,14 +43,24 @@ form {
 a {
   color: #2ce2e1;
   text-decoration: none;
+  opacity: 45%;
 }
 
 a:hover {
   color: #01172f;
-  font-weight: bold;
+  font-weight: 900;
 }
 
-#celsius {
+.active {
+  font-weight: 500;
+  cursor: default;
+  color: #2ce2e1;
+  opacity: 100%;
+}
+
+.active:hover {
+  text-decoration: none;
+  color: #2ce2e1;
   font-weight: 500;
 }
 
@@ -59,13 +69,10 @@ a:hover {
   color: #01172f;
 }
 
-#fahrenheit {
-  opacity: 45%;
-}
-
 #github-link {
   color: #99e9e7;
   font-weight: bold;
+  opacity: 100%;
 }
 
 .button {
@@ -103,10 +110,6 @@ input {
   opacity: 80%;
   border: none;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
-}
-
-.weak {
-  font-weight: 350;
 }
 
 .dateTime {
