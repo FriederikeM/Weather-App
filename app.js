@@ -128,9 +128,9 @@ function displayWeatherCondition(response) {
   } else if (response.data.weather[0].icon === "02n") {
     iconElement.setAttribute("class", "fas fa-cloud-moon");
   } else if (response.data.weather[0].icon === "09d") {
-    iconElement.setAttribute("class", "fas fa-showers-heavy");
+    iconElement.setAttribute("class", "fas fa-cloud-showers-heavy");
   } else if (response.data.weather[0].icon === "09n") {
-    iconElement.setAttribute("class", "fas fa-showers-heavy");
+    iconElement.setAttribute("class", "fas fa-cloud-showers-heavy");
   } else if (response.data.weather[0].icon === "10d") {
     iconElement.setAttribute("class", "fas fa-cloud-rain");
   } else if (response.data.weather[0].icon === "10n") {
