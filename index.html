@@ -27,7 +27,7 @@
               <form id="city-search">
                 <input
                   type="text"
-                  placeholder="Search for your city"
+                  placeholder="  Search for your city"
                   id="exampleInputcity1"
                   aria-describedby="cityHelp"
                 />
@@ -48,15 +48,16 @@
 
             <h2>
               <span id="current-temperature"></span>
-              <a href="#" id="celsius"> °C </a>|
-              <a href="#" class="weak" id="fahrenheit"> °F</a>
+              <span class="units">
+                <a href="#" id="celsius"> °C </a>|
+                <a href="#" class="weak" id="fahrenheit"> °F</a>
+              </span>
             </h2>
           </div>
-          <div class="col-sm"></div>
+
           <div class="col-sm">
             <p class="conditions">
               <br />
-
               <br />
               sunrise:
               <span id="sunrise"></span>
@@ -71,12 +72,13 @@
           <div class="col">
             <p>
               <span class="dateTime" id="week-day"></span>
+              <br />
               <span class="dateTime" id="time"></span>
               <br />
               <span class="dateTime" id="complete-date"></span>
             </p>
           </div>
-          <div class="col"></div>
+
           <div class="col">
             <p class="conditions extra">
               <br />
@@ -89,7 +91,7 @@
             </p>
           </div>
         </div>
-        <i class="fas fa-cloud-sun today"></i>
+        <i class="fas fa-cloud" id="main-icon"></i>
 
         <hr />
 

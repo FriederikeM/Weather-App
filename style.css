@@ -19,11 +19,11 @@ h2 {
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 38px;
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 47px;
 }
 
 h6 {
@@ -55,8 +55,12 @@ a:hover {
 }
 
 #exampleInputcity1 {
-  background: #a5f3ef;
+  opacity: 80%;
   color: #01172f;
+}
+
+#fahrenheit {
+  opacity: 45%;
 }
 
 #github-link {
@@ -77,6 +81,13 @@ a:hover {
   color: #a5f3ef;
 }
 
+.units {
+  position: relative;
+  font-size: 15px;
+  top: -23px;
+  left: -10px;
+}
+
 i {
   color: #aafffa;
 }
@@ -89,7 +100,7 @@ hr {
 
 input {
   border-radius: 10px;
-  background-color: rgb(198, 235, 231);
+  opacity: 80%;
   border: none;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
 }
@@ -102,7 +113,7 @@ input {
   padding: 20px;
 }
 
-.today {
+#main-icon {
   font-size: 150px;
   position: relative;
   top: -40px;
@@ -117,6 +128,8 @@ input {
 }
 
 .conditions {
+  text-transform: capitalize;
+  color: #99e8e7;
   text-align: right;
   padding: 0 30px 0 0;
   line-height: 1.2;
