@@ -88,6 +88,20 @@ if (currentMinutes < 10) {
 
 time.innerHTML = `${currentHours}:${currentMinutes}`;
 
+function formatHours(timestamp) {
+  let now = new Date(timestamp);
+  let currentHours = now.getHours();
+  if (currentHours < 10) {
+    currentHours = `0${currentHours}`;
+  }
+
+  let currentMinutes = now.getMinutes();
+  if (currentMinutes < 10) {
+    currentMinutes = `0${currentMinutes}`;
+  }
+  return `${currentHours}:${currentMinutes}`;
+}
+
 // city display
 
 let form = document.querySelector("#city-search");
@@ -149,8 +163,6 @@ function displayWeatherCondition(response) {
     iconElement.setAttribute("class", "fas fa-stream");
   }
 
-  // convert & show sunrise & sunset time
-
   function convertSunriseTime(timestamp) {
     let date = new Date(timestamp);
     let sunriseHours = date.getHours();
@@ -188,10 +200,44 @@ function displayWeatherCondition(response) {
   document.querySelector("#sunset").innerHTML = `${sunset}`;
 }
 
+// forecast
+
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = null;
+  let forecast = null;
+
+  for (let index = 0; index < 5; index++) {
+    forecast = response.data.list[index];
+    forecastElement.innerHTML += `
+     <div class="col-2">
+         <h3>
+           ${formatHours(forecast.dt * 1000)}
+         </h3>
+       <img 
+            src= "http://openweathermap.org/img/wn/${
+              forecast.weather[0].icon
+            }@2x.png" alt="" id="forecast-icon"/>
+        <div class="weather-forecast-temperature" id="weather-forecast-temperature">
+           <strong>${Math.round(
+             forecast.main.temp_max
+           )}°</strong id="celsius-max"> 
+           <span id="celsius-min">
+           ${Math.round(forecast.main.temp_min)}° 
+           </span>   
+        </div>
+     </div>
+     `;
+  }
+}
+
 function searchCity(city) {
   let apiKey = "c3d15673f9179ab862ad1d46b1b4c163";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherCondition);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function handleSubmit(event) {
@@ -222,6 +268,15 @@ function changeUnitToFahrenheit(event) {
   fahrenheit.classList.add("active");
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+
+  let celsiusMax = document.querySelector("#celsius-max");
+  let celsiusMin = document.querySelector("#celsius-min");
+  let fahrenheitMaxForecast = (celsiusMax * 9) / 5 + 32;
+  let fahrenheitMinForecast = (celsiusMin * 9) / 5 + 32;
+  let fahrenheitForecast = document.querySelector(
+    "#weather-forecast-temperature"
+  );
+  fahrenheitForecast.innerHTML = `${fahrenheitMaxForecast}° ${fahrenheitMinForecast}°`;
 }
 
 let fahrenheit = document.querySelector("#fahrenheit");
@@ -241,4 +296,4 @@ celsius.addEventListener("click", changeUnitToCelsius);
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
-searchCity("New York");
+searchCity("Milan");

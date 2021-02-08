@@ -26,6 +26,22 @@ h2 {
   font-size: 47px;
 }
 
+h3 {
+  font-size: 20px;
+  padding: 20px;
+  margin: -20px 0 0 24px;
+  font-weight: lighter;
+}
+
+#forecast-icon {
+  width: 60px;
+  margin: -20px 0 0 38px;
+}
+
+.weather-forecast-temperature {
+  margin: 0 -42px 0 42px;
+}
+
 h6 {
   text-align: center;
   color: #99e8e7;
@@ -49,6 +65,7 @@ a {
 a:hover {
   color: #01172f;
   font-weight: 900;
+  opacity: 100%;
 }
 
 .active {
@@ -119,15 +136,8 @@ input {
 #main-icon {
   font-size: 150px;
   position: relative;
-  top: -40px;
+  top: -30px;
   left: 152px;
-}
-
-.forecast-temperature,
-.forecast-day,
-.forecast-date {
-  margin: 0 0 0 40px;
-  text-align: center;
 }
 
 .conditions {
@@ -145,24 +155,4 @@ input {
 }
 .row {
   padding: 0 0 10px 0;
-}
-
-.forecast-temperature {
-  padding: 0 0 20px 0;
-}
-
-.forecast-day {
-  font-weight: bold;
-  padding: 0 0 5px 0;
-}
-
-.forecast-emoji {
-  font-size: 36px;
-  margin: 0 0 0 40px;
-  text-align: center;
-  padding: 0 0 5px 0;
-}
-
-.forecast {
-  margin: 0 0 0 20px;
 }
