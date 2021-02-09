@@ -183,9 +183,9 @@ function displayForecast(response) {
               forecast.weather[0].icon
             }@2x.png" alt="" id="forecast-icon"/>
         <div class="weather-forecast-temperature" id="weather-forecast-temperature">
-           <strong>${Math.round(
+           <strong><span class="forecast-temperature">${Math.round(
              forecast.main.temp_max
-           )}°</strong id="celsius-max"> 
+           )}</span>°</strong id="celsius-max"> 
         </div>
      </div>
      `;
@@ -211,6 +211,9 @@ function searchLocation(position) {
   let apiKey = "c3d15673f9179ab862ad1d46b1b4c163";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherCondition);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function getCurrentLocation(event) {
@@ -230,12 +233,18 @@ function changeUnitToFahrenheit(event) {
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 
-  let celsiusMax = document.querySelector("#celsius-max");
-  let fahrenheitMaxForecast = (celsiusMax * 9) / 5 + 32;
-  let fahrenheitForecast = document.querySelector(
-    "#weather-forecast-temperature"
-  );
-  fahrenheitForecast.innerHTML = `${fahrenheitMaxForecast}° `;
+  let forecastItems = document.querySelectorAll(".forecast-temperature");
+  forecastItems.forEach(function (item) {
+    // grabbing the current value to convert
+    let currentTemp = item.innerHTML;
+
+    // convert to Fahrenheit
+    item.innerHTML = Math.round((currentTemp * 9) / 5 + 32);
+  });
+
+  // to avoid double conversion
+  celsius.addEventListener("click", changeUnitToCelsius);
+  fahrenheit.removeEventListener("click", changeUnitToFahrenheit);
 }
 
 let fahrenheit = document.querySelector("#fahrenheit");
@@ -247,6 +256,19 @@ function changeUnitToCelsius(event) {
   fahrenheit.classList.remove("active");
   let temperatureElement = document.querySelector("#current-temperature");
   temperatureElement.innerHTML = celsiusTemperature;
+
+  let forecastItems = document.querySelectorAll(".forecast-temperature");
+  forecastItems.forEach(function (item) {
+    // grabbing the current value to convert
+    let currentTemp = item.innerHTML;
+
+    // convert to Celsius
+    item.innerHTML = Math.round(((currentTemp - 32) * 5) / 9);
+  });
+
+  // to avoid double conversion
+  celsius.removeEventListener("click", changeUnitToCelsius);
+  fahrenheit.addEventListener("click", changeUnitToFahrenheit);
 }
 
 let celsius = document.querySelector("#celsius");
