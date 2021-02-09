@@ -15,6 +15,9 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+   
 
     <title>Weather App</title>
   </head>
@@ -54,40 +57,36 @@
               </span>
             </h2>
           </div>
+          
 
-          <div class="col-sm">
-            <p class="conditions">
-              <br />
-              <br />
-              sunrise:
-              <span id="sunrise"></span>
-              <br />
-              sunset:
-              <span id="sunset"></span>
-            </p>
-          </div>
+          <div class="col">
+              <p class="conditions extra">
+                  Last 
+                  <span class = "update">
+                  updated:
+                  </span>
+                  <br>
+                  <span  id="week-day"></span>,
+                  <span  id="time"></span>
+                  <br />
+                  <span  id="complete-date"></span>
+              </p>
+            </div>
         </div>
 
         <div class="row">
-          <div class="col">
+          <div class="col dateTime">
             <p>
-              <span class="dateTime" id="week-day"></span>
-              <br />
-              <span class="dateTime" id="time"></span>
-              <br />
-              <span class="dateTime" id="complete-date"></span>
-            </p>
-          </div>
-
-          <div class="col">
-            <p class="conditions extra">
-              <br />
-              <span id="current-description"></span>
-              <br />
-              wind:
-              <span id="wind"></span>km/h
-              <br />
-              humidity: <span id="humidity"></span>%
+                <span id="current-description"></span>
+                <br />
+                wind:
+                <span id="wind"></span>
+                <span class="speedUnit">
+                km/h
+                </span>
+                <br />
+                humidity: <span id="humidity"></span>%
+              
             </p>
           </div>
         </div>

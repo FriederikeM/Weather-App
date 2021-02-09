@@ -162,42 +162,6 @@ function displayWeatherCondition(response) {
   } else if (response.data.weather[0].icon === "50n") {
     iconElement.setAttribute("class", "fas fa-stream");
   }
-
-  function convertSunriseTime(timestamp) {
-    let date = new Date(timestamp);
-    let sunriseHours = date.getHours();
-    if (sunriseHours < 10) {
-      sunriseHours = `0${sunriseHours}`;
-    }
-
-    let sunriseMinutes = date.getMinutes();
-    if (sunriseMinutes < 10) {
-      sunriseMinutes = `0${sunriseMinutes}`;
-    }
-
-    return `${sunriseHours}:${sunriseMinutes}`;
-  }
-
-  let sunrise = convertSunriseTime(response.data.sys.sunrise * 1000);
-  document.querySelector("#sunrise").innerHTML = `${sunrise}`;
-
-  function convertSunsetTime(timestamp) {
-    let date = new Date(timestamp);
-    let sunsetHours = date.getHours();
-    if (sunsetHours < 10) {
-      sunsetHours = `0${sunsetHours}`;
-    }
-
-    let sunsetMinutes = date.getMinutes();
-    if (sunsetMinutes < 10) {
-      sunsetMinutes = `0${sunsetMinutes}`;
-    }
-
-    return `${sunsetHours}:${sunsetMinutes}`;
-  }
-
-  let sunset = convertSunsetTime(response.data.sys.sunset * 1000);
-  document.querySelector("#sunset").innerHTML = `${sunset}`;
 }
 
 // forecast
@@ -222,9 +186,6 @@ function displayForecast(response) {
            <strong>${Math.round(
              forecast.main.temp_max
            )}°</strong id="celsius-max"> 
-           <span id="celsius-min">
-           ${Math.round(forecast.main.temp_min)}° 
-           </span>   
         </div>
      </div>
      `;
@@ -270,13 +231,11 @@ function changeUnitToFahrenheit(event) {
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 
   let celsiusMax = document.querySelector("#celsius-max");
-  let celsiusMin = document.querySelector("#celsius-min");
   let fahrenheitMaxForecast = (celsiusMax * 9) / 5 + 32;
-  let fahrenheitMinForecast = (celsiusMin * 9) / 5 + 32;
   let fahrenheitForecast = document.querySelector(
     "#weather-forecast-temperature"
   );
-  fahrenheitForecast.innerHTML = `${fahrenheitMaxForecast}° ${fahrenheitMinForecast}°`;
+  fahrenheitForecast.innerHTML = `${fahrenheitMaxForecast}° `;
 }
 
 let fahrenheit = document.querySelector("#fahrenheit");
