@@ -15,9 +15,11 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
-   
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Weather App</title>
   </head>
@@ -30,7 +32,7 @@
               <form id="city-search">
                 <input
                   type="text"
-                  placeholder="  Search for your city"
+                  placeholder="Search for your city"
                   id="exampleInputcity1"
                   aria-describedby="cityHelp"
                 />
@@ -57,49 +59,42 @@
               </span>
             </h2>
           </div>
-          
 
           <div class="col">
-              <p class="conditions extra">
-                  Last 
-                  <span class = "update">
-                  updated:
-                  </span>
-                  <br>
-                  <span  id="week-day"></span>,
-                  <span  id="time"></span>
-                  <br />
-                  <span  id="complete-date"></span>
-              </p>
-            </div>
+            <p class="conditions extra">
+              Last
+              <span class="update"> updated: </span>
+              <br />
+              <span id="week-day"></span>,
+              <span id="time"></span>
+              <br />
+              <span id="complete-date"></span>
+            </p>
+          </div>
         </div>
 
         <div class="row">
           <div class="col dateTime">
             <p>
-                <span id="current-description"></span>
-                <br />
-                wind:
-                <span id="wind"></span>
-                <span class="speedUnit">
-                km/h
-                </span>
-                <br />
-                humidity: <span id="humidity"></span>%
-              
+              <span id="current-description"></span>
+              <br />
+              wind:
+              <span id="wind"></span>
+              <span class="speedUnit"> km/h </span>
+              <br />
+              humidity: <span id="humidity"></span>%
             </p>
           </div>
         </div>
         <i class="fas fa-cloud" id="main-icon"></i>
-
+        <br />
+        <br />
         <hr />
 
-        <div class="row weather-forecast" id="forecast">
-            
-          </div>
-        </div>
+        <div class="row weather-forecast" id="forecast"></div>
       </div>
     </div>
+
     <h6>
       <i class="fab fa-github"></i>
       <a

@@ -8,6 +8,7 @@
   color: #2ce2e1;
   box-shadow: inset 5px 10px 30px 10px rgba(0, 52, 87, 1);
   font-family: "Josefin Sans", sans-serif;
+  position: relative;
 }
 
 body {
@@ -81,7 +82,8 @@ a:hover {
 #exampleInputcity1 {
   opacity: 80%;
   color: #01172f;
-  width: 315px;
+  width: 308px;
+  padding: 2px 0 0 8px;
 }
 
 #github-link {
@@ -136,9 +138,9 @@ input {
 
 #main-icon {
   font-size: 200px;
-  position: relative;
-  top: -30px;
-  left: 170px;
+  position: absolute;
+  top: 270px;
+  left: 190px;
 }
 
 #forecast-icon {
